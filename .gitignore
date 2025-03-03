@@ -1,0 +1,9 @@
+./checkstart
+./vscode
+checkstart/settings/local_settings.py
+apps/**/__pycache__/
+checkstart/__pycache__/
+/apps/**/**/__pycache__/
+apps/**/**/**/__pycache__/
+apps/**/test.py
+checkstart/**/__pycache__/
