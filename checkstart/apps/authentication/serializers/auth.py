@@ -1,13 +1,12 @@
 from django.contrib.auth import authenticate
 from django.utils.translation import gettext_lazy as _
-from rest_framework import serializers
-from rest_framework.response import Response
-
 from intergeld.apps.core.Exceptions.device_exceptions import InvalidMacAddressException
 from intergeld.apps.user_app.utils.phone_check import (
     initiate_phone_verification,
     verify_code,
 )
+from rest_framework import serializers
+from rest_framework.response import Response
 
 
 class AuthTokenSerializer(serializers.Serializer):

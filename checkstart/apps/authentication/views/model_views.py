@@ -1,14 +1,13 @@
 from django.core.exceptions import ValidationError
+from intergeld.apps.user_app.utils.phone_check import (
+    initiate_phone_verification,
+    verify_code,
+)
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
-
-from intergeld.apps.user_app.utils.phone_check import (
-    initiate_phone_verification,
-    verify_code,
-)
 
 from ..serializers.model_serializers import InterUser, InterUserSerializer
 

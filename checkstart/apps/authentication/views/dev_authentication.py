@@ -1,16 +1,15 @@
 import random
 
 from django.core.exceptions import ValidationError
+from intergeld.apps.core.permissions.main import InterUserPermission
+from intergeld.apps.core.utils.send_mail import send_email_verification_code
+from intergeld.apps.user_app.models import OTP
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet
-
-from intergeld.apps.core.permissions.main import InterUserPermission
-from intergeld.apps.core.utils.send_mail import send_email_verification_code
-from intergeld.apps.user_app.models import OTP
 
 from ..serializers.model_serializers import InterUser, InterUserSerializer
 

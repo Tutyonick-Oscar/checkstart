@@ -14,16 +14,17 @@ from checkstart.apps.core.validators.password import (
     uppercase_checker,
 )
 
+
 class UserManager(BaseUserManager, CustomBaseManager):
 
-    def create_user(self, email,password, username, **kwargs):
-        user = self.model(username=username,email=email)
+    def create_user(self, email, password, username, **kwargs):
+        user = self.model(username=username, email=email)
         user.set_password(password)
         user.save()
         return user
 
-    def create_superuser(self, email, password, username,**kwargs):
-        user = self.create_user(email, password, username,**kwargs)
+    def create_superuser(self, email, password, username, **kwargs):
+        user = self.create_user(email, password, username, **kwargs)
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
@@ -33,7 +34,7 @@ class UserManager(BaseUserManager, CustomBaseManager):
 
 class User(BaseModel, AbstractBaseUser):
     created_by = None
-    email = models.CharField(max_length=50,unique=True)
+    email = models.CharField(max_length=50, unique=True)
     username = models.CharField(max_length=50, validators=[str_checker])
     password = models.CharField(
         ("password"),
@@ -53,8 +54,7 @@ class User(BaseModel, AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["password","username"]
-
+    REQUIRED_FIELDS = ["password", "username"]
 
     def __str__(self) -> str:
         return self.username
@@ -95,4 +95,3 @@ class User(BaseModel, AbstractBaseUser):
     def delete(self, **kwargs):
         self.email = self.email + f"_deleted_at_{timezone.now()}"
         return super().delete(**kwargs)
-

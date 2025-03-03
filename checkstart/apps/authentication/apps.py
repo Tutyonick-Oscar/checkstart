@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+
 from checkstart.utils.main import app_path
 
 
@@ -7,5 +8,6 @@ class UserAppConfig(AppConfig):
     name = app_path("authentication")
 
     def ready(self):
-        import  checkstart.apps.authentication.signals
+        import checkstart.apps.authentication.signals
+
         # return super().ready()

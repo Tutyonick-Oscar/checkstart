@@ -1,7 +1,6 @@
 import requests
-from requests.auth import HTTPBasicAuth
-
 from intergeld.settings.settings import SINCH_API_KEY, SINCH_API_SECRET
+from requests.auth import HTTPBasicAuth
 
 # from twilio.base.exceptions import TwilioRestException
 # from twilio.rest import Client

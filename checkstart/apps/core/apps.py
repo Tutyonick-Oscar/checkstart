@@ -1,5 +1,4 @@
 from django.apps import AppConfig
-
 from intergeld.utils.app_path import app_path
 
 

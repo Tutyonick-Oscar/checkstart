@@ -2,7 +2,7 @@ from django.apps import apps
 from django.db import models
 from django.utils import timezone
 
-from  checkstart.apps.core.middlewares import local
+from checkstart.apps.core.middlewares import local
 from checkstart.settings.settings import AUTH_USER_MODEL
 
 
@@ -50,11 +50,11 @@ class BaseModel(models.Model):
             return super().save(*args, **kwargs)
 
         if self.pk is None:
-            auth_user =  getattr(local, "CURRENT_USER",None)
+            auth_user = getattr(local, "CURRENT_USER", None)
             if auth_user:
                 self.created_by = auth_user
                 return super().save(*args, **kwargs)
-            
+
             return super().save(*args, **kwargs)
-        
+
         return super().save(*args, **kwargs)
