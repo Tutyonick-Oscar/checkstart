@@ -14,8 +14,6 @@ Faker==36.1.1
 filelock==3.17.0
 identify==2.6.8
 inflection==0.5.1
-ipython==9.0.0
-ipython_pygments_lexers==1.1.1
 jedi==0.19.2
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1

@@ -1,5 +1,6 @@
 ./checkstart
 ./vscode
+dev_requirements.txt
 checkstart/settings/local_settings.py
 apps/**/__pycache__/
 checkstart/__pycache__/
