@@ -12,13 +12,17 @@ drf-spectacular==0.28.0
 executing==2.2.0
 Faker==36.1.1
 filelock==3.17.0
+gunicorn==23.0.0
 identify==2.6.8
 inflection==0.5.1
+ipython==9.0.0
+ipython_pygments_lexers==1.1.1
 jedi==0.19.2
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 matplotlib-inline==0.1.7
 nodeenv==1.9.1
+packaging==24.2
 parso==0.8.4
 pexpect==4.9.0
 pillow==11.1.0
