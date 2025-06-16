@@ -12,6 +12,7 @@ admin.site.index_title = "CHECKSTART ADMIN"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include("checkstart.routes.api")),
+    path("site/", include("checkstart.routes.web")),
 ]
 
 # specular
@@ -19,3 +20,5 @@ urlpatterns += [
     path("api/docs/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
 ]
+# silk
+urlpatterns += [path("silk/", include("silk.urls", namespace="silk"))]

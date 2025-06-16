@@ -1,5 +1,6 @@
 import datetime
 
+import auto_prefetch
 from django.contrib.auth import get_user_model
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
@@ -7,7 +8,8 @@ from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from checkstart.apps.core.models import BaseModel, CustomBaseManager
+from checkstart.apps.core.models import BaseModel
+from checkstart.apps.student.managers.student import StudentManager
 
 
 class Student(BaseModel):
@@ -34,10 +36,12 @@ class Student(BaseModel):
     promotion = models.IntegerField()
     level = models.CharField(max_length=4)
     speciality = models.CharField(max_length=50, null=True, blank=True)
-    user = models.OneToOneField(
+    user = auto_prefetch.OneToOneField(
         get_user_model(), related_name="student", on_delete=models.CASCADE
     )
     student_check_pass = models.BooleanField(default=False)
+
+    objects = StudentManager()
 
     def __str__(self):
         return f"{self.name} - {self.matricule}"

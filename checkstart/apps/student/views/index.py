@@ -1,9 +1,10 @@
+from django.views import generic
 from rest_framework import mixins
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from ..serializers.index import InvoiceSerializer, Student, StudentSerializer
+from ..serializers.index import Invoice, InvoiceSerializer, Student, StudentSerializer
 
 
 class StudentsView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMixin):
@@ -68,3 +69,10 @@ class StudentsView(GenericViewSet, mixins.ListModelMixin, mixins.RetrieveModelMi
                 "response_message": "The actual fees expeted to be paid by the student",
             }
         )
+
+
+class InvoicesView(generic.ListView):
+    model = Invoice
+    queryset = Invoice.objects.select_related("student")
+    template_name = "invoices.html"
+    context_object_name = "invoices"

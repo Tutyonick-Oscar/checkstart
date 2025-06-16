@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from checkstart.apps.core.models import BaseModel, CustomBaseManager
+from checkstart.apps.core.models import BaseManager, BaseModel
 from checkstart.apps.core.validators.name import str_checker
 from checkstart.apps.core.validators.password import (
     lowercase_checker,
@@ -15,7 +15,7 @@ from checkstart.apps.core.validators.password import (
 )
 
 
-class UserManager(BaseUserManager, CustomBaseManager):
+class UserManager(BaseUserManager, BaseManager):
 
     def create_user(self, email, password, username, **kwargs):
         user = self.model(username=username, email=email)
@@ -71,8 +71,7 @@ class User(BaseModel, AbstractBaseUser):
         super().clean()
         name_in_password_checker(self.password, self.username)
 
-    class Meta:
-        base_manager_name = "objects"
+    class Meta(BaseModel.Meta):
         default_manager_name = "objects"
         # constraints = [
         #     models.UniqueConstraint(
